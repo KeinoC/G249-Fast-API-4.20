@@ -16,6 +16,9 @@ class User(BaseModel):
     name: str
     age: int
 
+@app.get("/")
+def index():
+    return {"hello": "from home"}
 
 @app.get("/users/{user_id}")
 def get_user(user_id: int = Path(None, description="The ID of the item you'd like to view")): ## constraints via path, None is the default value
