@@ -1,1 +1,1 @@
-web: gunicorn -w 4 -k uvicorn.workers.Uvicorn.Worker g249fastapi:app
+web: uvicorn g249fastapi:app --host=0.0.0.0 --port=${PORT:-5000}

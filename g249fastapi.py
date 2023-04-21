@@ -4,8 +4,6 @@ from pydantic import BaseModel
 
 app = FastAPI()
 
-
-
 # Path parameters
 
 users = {
@@ -20,8 +18,8 @@ class User(BaseModel):
 def index():
     return {"hello": "from home"}
 
-@app.get("/users/{user_id}")
-def get_user(user_id: int = Path(None, description="The ID of the item you'd like to view")): ## constraints via path, None is the default value
-    return user[user_id]
+@app.get("/users/{user_id}", response_model=User)  # Define response model for /users/{user_id} endpoint
+def get_user(user_id: int = Path(None, description="The ID of the item you'd like to view")):
+    return users.get(user_id)  # Fix variable name typo here
 
-# Query paramet
+# Query parameters
