@@ -19,7 +19,7 @@ def index():
     return {"hello": "from home"}
 
 @app.get("/users/{user_id}", response_model=User)  # Define response model for /users/{user_id} endpoint
-def get_user(user_id: int = Path(None, description="The ID of the item you'd like to view")):
+def get_user(user_id: int):
     return users.get(user_id)  # Fix variable name typo here
 
 # Query parameters
